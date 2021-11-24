@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.1)
+project(SU2_CFD)
+file(GLOB_RECURSE SU2_CFD_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+add_executable(${PROJECT_NAME}  ${SU2_CFD_SRC})
+target_link_libraries(${PROJECT_NAME} ${LIB_SU2} LIB_CGNS tecio.lib)

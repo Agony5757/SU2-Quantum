@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.1)
+project(SU2)
+FILE(GLOB_RECURSE SOURCE_FILES  ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+add_library(${LIB_SU2} STATIC ${SOURCE_FILES})
+target_link_libraries(${LIB_SU2} LIB_CGNS)

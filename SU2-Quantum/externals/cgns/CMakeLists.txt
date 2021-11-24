@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.1)
+project(LIB_CGNS)
+FILE(GLOB_RECURSE SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
+add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
