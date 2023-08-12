@@ -220,4 +220,4 @@ namespace SU2_TYPE {
 } // namespace SU2_TYPE
 
 #define HAVE_CGNS
-#define HAVE_TECIO
+// #define HAVE_TECIO

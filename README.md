@@ -1,7 +1,7 @@
 # SU2-Quantum
 
 ## Purpose
-For code availability of ''Quantum Approach To Accelerate Finite Volume Method on Steady Computational Fluid Dynamics Problems''(https://arxiv.org/abs/2102.03557v1).
+For code availability of ''Quantum Approach To Accelerate Finite Volume Method on Steady Computational Fluid Dynamics Problems''(https://link.springer.com/article/10.1007/s11128-022-03478-w).
 
 ## Directories
 
@@ -14,6 +14,49 @@ For code availability of ''Quantum Approach To Accelerate Finite Volume Method o
 - Examples
 
     Three examples presented in the article with mesh file and configuration file given.
+
+## Build
+
+### Tested Environments
+- Windows: MSVC
+- Linux: gcc
+
+### Prerequisites
+- C++ compiler: with C++14 support
+- (optional) Boost
+- (optional) Tecio (see TECIO support section)
+
+### Build on Windows
+- Open folder SU2-Quantum with Visual Studio to load CMakeLists.txt
+- Start building 
+    > SU2_Quantum/build/{platform}/bin/SU2_CFD.exe
+
+### Build on Linux
+
+- Work directory
+    > SU2_Quantum/SU2_Quantum
+- Execute the commands
+```bash
+mkdir build
+cd build
+cmake ..
+make -j8
+```
+
+### TECIO support
+To build with Tecio support, you have to first install the tecio library. Then check the following codes:
+
+- SU2_Quantum/Common/basic_types/datatype_structure.hpp
+    - In the last line, uncomment the #HAVE_TECIO
+
+- SU2_Quantum/CMakeLists.txt
+    - SET(TECIO_ROOT path_of_tecio)
+    - then uncomment include_directories(...) and link_directories(...)
+
+- SU2_Quantum/SU2_CFD/CMakeLists.txt
+    - replace 'tecio.lib' with the tecio library name
+
+Finally, it will be built with tecio support.
 
 ## Usage
 
@@ -33,4 +76,4 @@ For code availability of ''Quantum Approach To Accelerate Finite Volume Method o
 
 ## Correspondance
 
-If you have any question about this code, please send mail to wuyuchun@ustc.edu.cn
+If you have any question about this code, please send mail to chenzhaoyun@iai.ustc.edu.cn or wuyuchun@ustc.edu.cn

@@ -4755,9 +4755,9 @@ void CEulerSolver::ImplicitEuler_Iteration(CGeometry *geometry, CSolver **solver
       DenseVector<su2double> picked_x;
 
       if (config->GetOutputHistogram() && ( extiter % config->GetOutputHistogramFreq() == 0 )) {
-          unsigned long space = config->GetHistogramSpace();
+          size_t space = (size_t)config->GetHistogramSpace();
           size_t sample_N = sampling_constant * log2(normalized_x.size) / epsilon / epsilon;
-          auto _out = histogram(normalized_x.square(), sample_N, space);
+          auto _out = histogram_v1(normalized_x.square(), sample_N, space);
           vector<size_t>& small_histo = get<0>(_out);
           vector<size_t>& big_histo = get<1>(_out);
           size_t other = get<2>(_out);
@@ -4804,8 +4804,8 @@ void CEulerSolver::ImplicitEuler_Iteration(CGeometry *geometry, CSolver **solver
   }
   else {
       if (config->GetOutputHistogram() && (extiter % config->GetOutputHistogramFreq() == 0)) {
-          unsigned long space = config->GetHistogramSpace();
-          vector<size_t> counter = histogram(normalized_x.square(), space);
+          size_t space = (size_t)config->GetHistogramSpace();
+          vector<size_t> counter = histogram_v2(normalized_x.square(), space);
           stringstream ss;
           ss << extiter;
           string buffer = ss.str();

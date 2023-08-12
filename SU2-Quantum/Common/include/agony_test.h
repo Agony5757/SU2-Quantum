@@ -219,8 +219,8 @@ struct DenseVector {
 		return idx;
 	}
 
-	vector<double> square() {
-		vector<double> values;
+	vector<su2double> square() {
+		vector<su2double> values;
 		values.resize(size);
 
 		for (int i = 0; i < size; ++i) {
@@ -526,7 +526,7 @@ DenseVector<Ty> l_inf_tomography_v2(DenseVector<Ty>& v, Ty threshold, su2double 
 }
 
 template<typename Ty>
-tuple<vector<size_t>, vector<size_t>, size_t> histogram(vector<Ty>& dist, size_t sample_num, size_t space) {
+tuple<vector<size_t>, vector<size_t>, size_t> histogram_v1(const vector<Ty>& dist, size_t sample_num, size_t space) {
 	size_t dist_size = dist.size();
 	vector<size_t> small_counter(space, 0);
 	vector<size_t> big_counter(space, 0);
@@ -547,7 +547,7 @@ tuple<vector<size_t>, vector<size_t>, size_t> histogram(vector<Ty>& dist, size_t
 }
 
 template<typename Ty>
-vector<size_t> histogram(vector<Ty>& dist, size_t space) {
+vector<size_t> histogram_v2(const vector<Ty>& dist, size_t space) {
 	size_t dist_size = dist.size();
 	vector<size_t> counter(space + 1, 0);
 	for (size_t i = 0; i < dist_size; ++i) {

@@ -24,14 +24,6 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#FIND_PACKAGE(OpenMP REQUIRED)
-#if(OPENMP_FOUND)
-#	message("OPENMP FOUND")
-#	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-#	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
-#endif()
-SET(BOOST_ROOT "C:/boost_1_68_0/")
 find_package(Boost)
 if(NOT Boost_FOUND)
     message("Not found Boost")
@@ -40,10 +32,10 @@ elseif (Boost_FOUND)
 endif()
 
 
-SET(TECIO_ROOT "C:/Program Files/Tecplot/Tecplot 360 EX 2018 R1")
+# SET(TECIO_ROOT "C:/Program Files/Tecplot/Tecplot 360 EX 2018 R1")
 
-include_directories(${TECIO_ROOT}/include)
-link_directories(${TECIO_ROOT}/lib)
+# include_directories(${TECIO_ROOT}/include)
+# link_directories(${TECIO_ROOT}/lib)
 
 if (MSVC)
     list(APPEND EXTRA_LDFLAGS
